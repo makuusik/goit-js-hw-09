@@ -13,9 +13,11 @@ function createPromise(position, delay) {
 }
 
 const form = document.querySelector('.form');
+const submitButton = form.querySelector('button[type="submit"]');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  submitButton.disabled = true;
 
   const delayInput = document.querySelector('input[name="delay"]');
   const stepInput = document.querySelector('input[name="step"]');
@@ -48,5 +50,8 @@ form.addEventListener('submit', event => {
     })
     .catch(() => {
       console.log('At least one promise rejected');
+    })
+    .finally(() => {
+      submitButton.disabled = false;
     });
 });

@@ -15,14 +15,17 @@ function changeBackgroundColor() {
 
 function handleStartClick() {
   startButton.disabled = true;
+  stopButton.disabled = false;
   intervalId = setInterval(changeBackgroundColor, 666);
 }
 
 function handleStopClick() {
   startButton.disabled = false;
+  stopButton.disabled = true;
   clearInterval(intervalId);
-  document.body.style.backgroundColor = '';
 }
 
 startButton.addEventListener('click', handleStartClick);
 stopButton.addEventListener('click', handleStopClick);
+
+stopButton.disabled = true;
